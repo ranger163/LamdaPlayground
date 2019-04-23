@@ -3,6 +3,7 @@ package me.inassar.exercise;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Java8Solution {
 
@@ -31,9 +32,9 @@ public class Java8Solution {
 
     }
 
-    private static void printConditionally(List<SuperHero> superHeros, Condition condition) {
+    private static void printConditionally(List<SuperHero> superHeros, Predicate<SuperHero> predicate) {
         for (SuperHero superHero : superHeros) {
-            if (condition.test(superHero)) {
+            if (predicate.test(superHero)) {
                 System.out.println(superHero);
             }
         }
