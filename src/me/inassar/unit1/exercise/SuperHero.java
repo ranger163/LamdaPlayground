@@ -1,4 +1,4 @@
-package me.inassar.exercise;
+package me.inassar.unit1.exercise;
 
 public class SuperHero {
     String firstName;

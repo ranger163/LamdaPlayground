@@ -1,11 +1,14 @@
-package me.inassar.exercise;
+package me.inassar.unit2;
+
+import me.inassar.unit1.exercise.SuperHero;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class Java8Solution {
+public class StandardFunctionalInterfacesExample {
 
     public static void main(String[] args) {
         List<SuperHero> superHeros = Arrays.asList(
@@ -21,21 +24,25 @@ public class Java8Solution {
 
         // Step 2: create a method that prints all elements of the list
         System.out.println("\nPrinting all super heros");
-        printConditionally(superHeros, condition -> true);
+        performConditionally(superHeros, condition -> true, superHero -> System.out.println(superHero));
 
         // Step 2: create a method that prints all people that have fist name starting with T
         System.out.println("\nPrinting all super heros starting with T");
-        printConditionally(superHeros, superHero -> superHero.getFirstName().startsWith("T"));
+        performConditionally(superHeros, superHero -> superHero.getFirstName().startsWith("T"),
+                superHero -> System.out.println(superHero));
 
         System.out.println("\nPrinting all super heros starts with A");
-        printConditionally(superHeros, superHero -> superHero.getFirstName().startsWith("A"));
+        performConditionally(superHeros, superHero -> superHero.getFirstName().startsWith("A"),
+                superHero -> System.out.println(superHero));
 
     }
 
-    private static void printConditionally(List<SuperHero> superHeros, Predicate<SuperHero> predicate) {
+    private static void performConditionally(
+            List<SuperHero> superHeros, Predicate<SuperHero> predicate,
+            Consumer<SuperHero> consumer) {
         for (SuperHero superHero : superHeros) {
             if (predicate.test(superHero)) {
-                System.out.println(superHero);
+                consumer.accept(superHero);
             }
         }
     }

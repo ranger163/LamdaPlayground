@@ -1,4 +1,4 @@
-package me.inassar;
+package me.inassar.unit1;
 
 public class Greeter {
 
