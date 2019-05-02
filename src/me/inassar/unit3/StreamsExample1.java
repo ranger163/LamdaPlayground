@@ -4,7 +4,6 @@ import me.inassar.unit1.exercise.SuperHero;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class StreamsExample1 {
 
@@ -20,5 +19,10 @@ public class StreamsExample1 {
                 .filter(superHero -> superHero.getFirstName().startsWith("T"))
                 .forEach(superHero -> System.out.println(superHero.getFirstName())
                 );
+
+        long count = superHeros.parallelStream()
+                .filter(hero -> hero.getFirstName().startsWith("T"))
+                .count();
+        System.out.println(count);
     }
 }
